@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b16">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mi Quincena">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="color-scheme" content="dark">
+<link rel="manifest" href="mi-quincena-manifest.webmanifest">
+<link rel="icon" href="mi-quincena-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="mi-quincena-icon.svg">
+<title>Mi Quincena · Arito IA</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d2e;--panel2:#17253a;--line:#2b3b55;--ink:#f5f7fb;--muted:#9fabc0;--purple:#b59aff;--mint:#66ddb0;--yellow:#ffd66b;--pink:#ff8da0;--blue:#75baff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 4% 0,#31245b,transparent 33rem),radial-gradient(circle at 100% 4%,#10384d,transparent 28rem),var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.hide{display:none!important}.app{max-width:1180px;margin:auto;padding:18px}.card{background:#121d2eef;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 18px 40px #0004}.setup{min-height:100vh;display:grid;place-items:center;padding:20px}.setup .card{max-width:760px}.brand{display:flex;align-items:center;gap:10px;font-weight:950;font-size:20px}.mark{width:36px;height:36px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(140deg,var(--purple),var(--blue));color:#161127}.eyebrow{margin:20px 0 5px;color:var(--purple);font-size:11px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase}.setup h1{font-size:clamp(30px,6vw,47px);line-height:1.02;letter-spacing:-2px;margin:0}.muted{color:var(--muted)}.start-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.start{border:1px solid var(--line);background:#17253a;color:var(--ink);padding:18px;border-radius:18px;text-align:left}.start:hover{border-color:var(--purple);transform:translateY(-2px)}.start strong{display:block;font-size:17px;margin:7px 0}.privacy{font-size:12px;color:var(--muted);margin:17px 0 0}.top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin:5px 0 16px}.top h1{margin:0;font-size:27px;letter-spacing:-1.2px}.top p{margin:4px 0;color:var(--muted)}.status{font-size:12px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:8px 10px;color:#dce4f0}.status.good{color:#a8f5d1;border-color:#418e70;background:#17433388}.nav{display:flex;gap:7px;overflow:auto;margin-bottom:14px}.nav button{flex:1;min-width:92px;border:1px solid var(--line);background:#111b2a;color:var(--muted);padding:10px 8px;border-radius:12px;font-weight:850}.nav button.on{background:#8f72db;color:#fff;border-color:#a98bf2}.page{display:none}.page.on{display:block}.grid{display:grid;gap:13px}.two{grid-template-columns:1.1fr .9fr}.three{grid-template-columns:repeat(3,1fr)}.hero{background:linear-gradient(130deg,#8765cb,#5069b4 60%,#27819a);border:0}.hero p{margin:0;color:#f4efff}.hero .big{font-size:39px;line-height:1;font-weight:950;letter-spacing:-2px;margin:9px 0}.hero small{color:#e8e2ff}.big{font-size:28px;font-weight:950;letter-spacing:-1.2px}.kpi small,.line small{color:var(--muted)}.kpi b{display:block;font-size:23px;margin:8px 0}.mint{color:var(--mint)}.purple{color:var(--purple)}.pink{color:var(--pink)}.ai{background:linear-gradient(135deg,#261d50,#172943);border-color:#5a4a95}.ai strong{display:block;color:#d5c4ff}.ai p{font-size:16px;line-height:1.42;margin:10px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:9px}.list{display:grid;gap:8px;margin-top:12px}.line{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px;border:1px solid var(--line);background:#0f1827;border-radius:14px}.line b{display:block}.tag{font-size:10px;font-weight:900;padding:4px 7px;border-radius:999px;background:#2c3c58;color:#d2ddf0}.tag.debt{background:#5b2c4055;color:#ffb7c2}.tag.essential{background:#22514155;color:#adf4d3}.tag.goal{background:#4e3b7b99;color:#e1d6ff}.primary,.secondary,.danger{border:0;border-radius:12px;padding:10px 12px;font-weight:900}.primary{background:linear-gradient(135deg,#c1a9ff,#8e70df);color:#1d1530}.secondary{background:#1c2a40;color:#e6ecf8;border:1px solid var(--line)}.danger{background:#542130;color:#ffbdc7;border:1px solid #8d3d51}.primary.mint-btn{background:linear-gradient(135deg,#9cf1d1,#4fc49e);color:#11352c}.form{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}.form .wide{grid-column:span 2}.field{display:grid;gap:4px}.field label{font-size:11px;color:var(--muted);font-weight:800}.field input,.field select{width:100%;border:1px solid var(--line);background:#0d1623;color:#fff;border-radius:10px;padding:10px}.form-actions{grid-column:span 2;display:flex;justify-content:flex-end;gap:8px}.envelope{grid-template-columns:38px 1fr auto auto}.bubble{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:#263755}.check{border:1px solid var(--line);width:30px;height:30px;border-radius:10px;background:#172338;color:#aab7ca;font-weight:950}.check.done{background:#1b573f;border-color:#3b956e;color:#aff6d1}.paid{opacity:.62}.progress{height:8px;background:#0b111c;border-radius:99px;overflow:hidden;margin:9px 0 5px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--blue));border-radius:99px}.debt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.debt h3{margin:0 0 4px}.debt .amount{font-size:26px;font-weight:950;margin:10px 0}.debt .small{font-size:12px;color:var(--muted)}.debt input{width:100%;margin:10px 0 7px;border:1px solid var(--line);border-radius:10px;padding:10px;background:#0c1521;color:#fff}.pie-hero{background:linear-gradient(135deg,#543f2b,#28221e);border-color:#70533a}.prompt{background:#0a111c;border:1px solid var(--line);border-radius:13px;padding:12px;color:#cbd6e8;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;line-height:1.5}.notice{padding:11px;border-radius:12px;background:#25213a;border:1px solid #544879;color:#e6dcff;font-size:13px}.notice.warn{background:#3e301c;border-color:#80632f;color:#ffe5a4}.actions{display:flex;gap:8px;flex-wrap:wrap}.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;transition:.2s;background:#f8f6ff;color:#2d2540;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:850;box-shadow:0 10px 28px #0008;z-index:10}.toast.on{opacity:1;transform:translate(-50%,0)}.empty{text-align:center;padding:20px;border:1px dashed #40516a;color:var(--muted);border-radius:14px;font-size:13px}.help{font-size:12px;color:var(--muted);margin:10px 0 0}
+@media(max-width:750px){.app{padding:12px}.two,.three,.debt-grid,.start-grid{grid-template-columns:1fr}.top{display:block}.top .status{display:inline-block;margin-top:10px}.nav{position:sticky;top:0;padding:7px 0;background:#0d1522ee;backdrop-filter:blur(8px);z-index:2}.nav button{min-width:80px;font-size:11px}.form{grid-template-columns:1fr}.form .wide,.form-actions{grid-column:auto}.envelope{grid-template-columns:35px 1fr auto auto}}
+
+/* Mobile-first redesign: a private "cuaderno de quincena", not a dashboard. */
+:root{--bg:#101b16;--panel:#18261f;--panel2:#21342a;--line:#3a5548;--ink:#fff9ee;--muted:#aab9ad;--purple:#eaf278;--mint:#9be7bc;--yellow:#ffe17a;--pink:#ff9a7c;--blue:#9dc9b1}
+html{min-height:100%;background:var(--bg)}
+body{min-height:100dvh;background:radial-gradient(circle at 12% 0,#253d30 0,transparent 31rem),linear-gradient(180deg,#101b16 0,#0c1511 100%);color:var(--ink);font:15px/1.38 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.01em}
+*{-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit}button{min-height:44px;touch-action:manipulation}input,select{font-size:16px}
+.app{width:min(100%,480px);max-width:480px;min-height:100dvh;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(112px + env(safe-area-inset-bottom))}
+.setup{min-height:100dvh;padding:22px 18px;background:radial-gradient(circle at 100% 10%,#2d4534 0,transparent 22rem),var(--bg)}
+.setup .card{width:min(100%,450px);max-width:450px;padding:26px 22px}
+.card{position:relative;overflow:hidden;background:rgba(24,38,31,.96);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 16px 38px rgba(0,0,0,.18)}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:#617a68;opacity:.55}
+.brand{gap:10px;font-family:Georgia,"Times New Roman",serif;font-size:22px;letter-spacing:-.6px}
+.brand small{font:700 11px/1 ui-sans-serif,-apple-system,sans-serif;letter-spacing:.04em}
+.mark{width:39px;height:39px;border-radius:15px;background:var(--purple);color:#17251e;box-shadow:3px 3px 0 #426052;font-weight:950}
+.eyebrow{margin:14px 0 6px;color:var(--purple);font-size:10px;font-weight:900;letter-spacing:.14em}
+.setup h1,.top h1{font-family:Georgia,"Times New Roman",serif;color:var(--ink);letter-spacing:-1.5px}
+.setup h1{font-size:38px;line-height:1.01}.top h1{font-size:32px;line-height:1.04}
+.muted,.top p,.line small,.kpi small,.field label,.help{color:var(--muted)}
+.start-grid{grid-template-columns:1fr;gap:10px;margin-top:22px}
+.start{min-height:116px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:17px;border-radius:19px;text-align:left;transition:transform .18s,border-color .18s}
+.start:hover{border-color:var(--purple);transform:translateY(-2px)}.start strong{font-size:17px;letter-spacing:-.2px}.privacy{line-height:1.45}.phone-tip{margin:11px 0 0;color:#dfeccc;font-size:12px;font-weight:800}
+.top{display:flex;align-items:flex-end;margin:1px 0 18px;gap:12px}.top p{margin:4px 0 0}.top .eyebrow{margin:0 0 5px}.status{flex:0 0 auto;padding:8px 10px;border:1px solid #537261;border-radius:999px;background:#14241c;color:#d7e6d5;font-size:11px;white-space:nowrap}.status.good{color:#e7f278;border-color:#88964e;background:#26331c}
+.nav{position:fixed;left:50%;bottom:calc(11px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:20;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;gap:3px;width:min(calc(100% - 24px),456px);margin:0;padding:6px;border:1px solid #496353;background:rgba(18,30,24,.94);backdrop-filter:blur(18px);border-radius:20px;box-shadow:0 14px 35px rgba(0,0,0,.35)}
+.nav button{display:grid;place-items:center;align-content:center;gap:2px;min-width:0;min-height:49px;padding:5px 3px;border:0;border-radius:14px;background:transparent;color:#b9c6b7;font-size:10px;font-weight:850;line-height:1.05}.nav button span{font-size:17px;line-height:1}.nav button.on{background:var(--purple);color:#16241d;border:0}
+.page{padding-bottom:5px}.grid{gap:11px}.two,.debt-grid{grid-template-columns:1fr}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hero{min-height:210px;border-color:#d7e472;background:#33433a;color:#fffdf1}.hero::after{content:"";position:absolute;width:178px;height:178px;right:-56px;top:-63px;border:1px solid #aab762;border-radius:50%;box-shadow:0 0 0 20px rgba(234,242,120,.08),0 0 0 41px rgba(234,242,120,.05)}.hero::before{width:4px;background:var(--purple)}.hero>*{position:relative;z-index:1}.hero p{color:#e6ecd9;font-weight:800;letter-spacing:.02em}.hero .big{font-family:Georgia,"Times New Roman",serif;font-size:45px;line-height:1;letter-spacing:-2.4px;margin:12px 0}.hero small{color:#e3ebdc}.big{font-family:Georgia,"Times New Roman",serif;font-size:31px;letter-spacing:-1.5px}
+.ai{background:#203026;border-color:#6e896f}.ai::before{background:var(--mint)}.ai strong{color:var(--purple);font-size:13px;letter-spacing:.04em}.ai p{font-size:16px;line-height:1.43;margin:12px 0}
+.kpi{min-height:120px;padding:13px 11px;border-radius:19px}.kpi::before{width:2px}.kpi small{display:block;font-size:10px;line-height:1.25}.kpi b{font-size:18px;line-height:1.08;margin:8px 0;letter-spacing:-1px;word-break:break-word}
+.mint{color:var(--mint)}.purple{color:var(--purple)}.pink{color:var(--pink)}
+.row{align-items:flex-start}.row>div{min-width:0}.row b{letter-spacing:-.2px}
+.list{gap:8px;margin-top:13px}.line{min-height:65px;padding:10px 11px;border:1px solid #385247;border-left:4px solid #547363;background:#142119;border-radius:16px}.line b{letter-spacing:-.2px}.line small{font-size:11px;line-height:1.3}.tag{font-size:9px;padding:5px 7px;background:#31483d;color:#e2f0e1}.tag.debt{background:#5b352f;color:#ffd4c5}.tag.essential{background:#28493a;color:#c9f5d7}.tag.goal{background:#48501f;color:#eff5a5}
+.primary,.secondary,.danger{min-height:44px;border-radius:14px;padding:10px 13px;font-size:13px;font-weight:900;letter-spacing:.01em}.primary{background:var(--purple);color:#17241d}.primary.mint-btn{background:var(--mint);color:#123023}.secondary{background:#23362c;color:#f2f7ed;border:1px solid #496354}.danger{background:#51312d;color:#ffd0c3;border:1px solid #8b554a}.primary:active,.secondary:active,.danger:active,.check:active,.preset:active{transform:scale(.97)}
+.cycle.on{background:var(--purple);border-color:var(--purple);color:#17241d}
+.form{grid-template-columns:1fr;gap:10px;margin-top:14px}.form .wide,.form-actions{grid-column:auto}.form-actions{display:flex;justify-content:stretch;gap:8px}.form-actions button{flex:1}.field{gap:5px}.field label{font-size:11px;font-weight:850;letter-spacing:.03em}.field input,.field select{min-height:46px;border:1px solid #3c5548;background:#101b16;color:var(--ink);border-radius:13px;padding:11px}.field input:focus,.field select:focus{outline:2px solid #dce96f;outline-offset:1px}
+.preset-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:12px}.preset{min-height:59px;padding:7px;border:1px solid #405b4e;border-radius:15px;background:#142119;color:#e8efe4;text-align:left}.preset span{display:block;color:var(--muted);font-size:10px;font-weight:800}.preset b{display:block;margin-top:4px;font-size:13px;letter-spacing:-.4px}.preset.on{border-color:#e6f073;background:#313d21;color:#fffde8}.preset.on span{color:#e5eea3}
+.envelope{grid-template-columns:39px minmax(0,1fr) auto 42px}.bubble{width:38px;height:38px;border-radius:13px;background:#294239;color:#e8f278}.check{width:42px;height:42px;border:1px solid #496254;border-radius:13px;background:#1d3027;color:#d7e2d6;font-size:20px}.check.done{background:#2f553c;border-color:#84bd91;color:#e8f8dd}.paid{opacity:.58}
+.debt{padding:18px}.debt h3{font-family:Georgia,"Times New Roman",serif;font-size:24px;letter-spacing:-.8px}.debt .amount{font-family:Georgia,"Times New Roman",serif;font-size:32px;letter-spacing:-1.7px}.debt input{min-height:46px;border:1px solid #3c5548;background:#101b16;color:var(--ink);border-radius:13px;padding:11px}.progress{height:9px;background:#0d1611}.progress i{background:var(--purple)}.debt-grid{gap:11px}
+.pie-hero{background:#2d3120;border-color:#717a43}.pie-hero::before{background:var(--yellow)}.pie-hero .big{color:#fff0aa}
+.notice{border:1px solid #525e37;background:#2c3522;color:#f1f4c4;border-radius:14px;font-size:13px;line-height:1.4}.notice.warn{background:#403125;border-color:#8a6743;color:#ffe1a7}.prompt{border:1px solid #3b5548;background:#0f1914;color:#d9e6d9;border-radius:15px;padding:13px;font-size:11px}.empty{border-color:#4b6255;color:var(--muted);border-radius:16px}.actions{gap:8px}.actions input{min-height:46px;background:#101b16!important;border-color:#3c5548!important;border-radius:13px!important;color:var(--ink)!important}
+.toast{bottom:calc(92px + env(safe-area-inset-bottom));max-width:calc(100% - 40px);border-radius:15px;background:#fff9ec;color:#1c2c23;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.quick-add{position:fixed;z-index:19;right:max(20px,calc(50% - 220px));bottom:calc(83px + env(safe-area-inset-bottom));width:56px;height:56px;min-height:56px;padding:0;border:1px solid #dce96f;border-radius:19px;background:var(--purple);color:#15241c;font-size:28px;font-weight:500;line-height:1;box-shadow:0 10px 22px rgba(0,0,0,.28)}
+@media(min-width:700px){.app{border-left:1px solid rgba(105,139,116,.25);border-right:1px solid rgba(105,139,116,.25);box-shadow:0 0 70px rgba(0,0,0,.18)}}
+@media(max-width:370px){.app{padding-left:12px;padding-right:12px}.hero .big{font-size:39px}.kpi b{font-size:15px}.nav{width:calc(100% - 16px)}.nav button{font-size:9px}.nav button span{font-size:16px}.preset b{font-size:11px}}
+
+/* Calm money actions: green confirms progress, blue stays neutral, coral is only destructive. */
+:root{--money-green:#14664e;--money-green-strong:#0f553f;--trust-blue:#1d4d61;--trust-blue-line:#4a7285;--soft-blue:#8dc5da;--risk-coral:#a35447;--risk-coral-line:#b96c5f;--selection:#eaf278;--selection-ink:#17241d}
+.primary,.secondary,.danger,.check,.preset,.start,.quick-add{box-shadow:none;transition:background .16s ease,border-color .16s ease,color .16s ease,transform .12s ease}
+.primary{background:var(--money-green);border:1px solid var(--money-green);border-radius:10px;color:#f7fffb;font-weight:800}
+.primary:hover{background:var(--money-green-strong);border-color:var(--money-green-strong)}
+.primary.mint-btn{background:#1b7659;border-color:#2c916d;color:#f8fffb}
+.secondary{background:transparent;border:1px solid var(--trust-blue-line);border-radius:10px;color:#d9edf5;font-weight:750}
+.secondary:hover{background:rgba(29,77,97,.42);border-color:var(--soft-blue);color:#f3fbff}
+.danger{background:transparent;border:1px solid var(--risk-coral-line);border-radius:10px;color:#ffd3cb;font-weight:750}
+.danger:hover{background:rgba(163,84,71,.18);border-color:#e09384;color:#fff4f1}
+.primary:active,.secondary:active,.danger:active,.check:active,.preset:active,.start:active,.quick-add:active{transform:scale(.97)}
+button:focus-visible{outline:3px solid var(--soft-blue);outline-offset:3px}
+button:disabled{cursor:not-allowed;opacity:.46}
+.start{min-height:104px;background:transparent;border:1px solid #426558;border-radius:14px;padding:16px;box-shadow:none}
+.start:hover{background:rgba(26,49,39,.65);border-color:var(--soft-blue);transform:none}
+.start strong{font-weight:800}.start>span:first-child{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border:1px solid #587a6d;border-radius:50%;color:#cce1d3}
+.nav button.on{position:relative;background:transparent;color:#f0fbf5}
+.nav button.on::after{content:"";position:absolute;bottom:3px;width:18px;height:3px;border-radius:99px;background:var(--selection)}
+.nav button.on span{color:var(--selection)}
+.cycle.on{background:var(--selection);border-color:var(--selection);color:var(--selection-ink)}
+.preset{min-height:55px;background:transparent;border:1px solid #3f6474;border-radius:10px;padding:8px;color:#d9edf5}
+.preset:hover{border-color:var(--soft-blue);background:rgba(29,77,97,.27)}
+.preset.on{background:rgba(234,242,120,.08);border-color:#dce976;box-shadow:inset 3px 0 0 var(--selection);color:#fffde5}
+.preset.on span{color:#e7efa5}
+.check{background:transparent;border:1px solid #4b6f7d;border-radius:50%;color:#cfe5ed}
+.check:hover{border-color:var(--soft-blue);background:rgba(29,77,97,.25)}
+.check.done{background:var(--money-green);border-color:#399773;color:#f8fffb}
+.check.delete{border-color:#9e6257;color:#ffd4cd}
+.check.delete:hover{background:rgba(163,84,71,.18);border-color:#d88778;color:#fff3f0}
+.quick-add{width:50px;height:50px;min-height:50px;border:1px solid #399773;border-radius:50%;background:var(--money-green);color:#f8fffb;font-size:25px;box-shadow:0 8px 18px rgba(0,0,0,.2)}
+.quick-add:hover{background:var(--money-green-strong);border-color:#65bb98}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+/* Pure-black version: white type, quiet surfaces, and only semantic color. */
+:root{--bg:#000;--panel:#090a0b;--panel2:#0d0f11;--line:#292d30;--ink:#fff;--muted:#a7acb1;--mint:#6fdbad;--pink:#ff9887;--yellow:#eaf278;--blue:#8dc5da}
+html,body{background:#000}body{background:#000;color:var(--ink)}
+.setup{background:#000}.app{background:#000}.card{background:#090a0b;border-color:#292d30;border-radius:18px;box-shadow:none}.card::before{background:#3a4145;opacity:.42}
+.hero,.ai,.pie-hero{background:#0a0d0d;border-color:#304037}.hero::after{display:none}.hero p,.hero small{color:#d5dad7}.hero::before{background:#4bbb90}.ai::before{background:#8dc5da}.pie-hero::before{background:#eaf278}
+.top h1,.setup h1,.brand{color:#fff}.status{background:#090a0b;border-color:#343a3e;color:#e7ebed}.status.good{background:#0d1713;border-color:#39755d;color:#bcefd4}
+.nav{background:rgba(0,0,0,.96);border-color:#2b3033;border-radius:16px;box-shadow:none}.nav button{min-height:50px;padding:4px;font-size:0}.nav button span{font-size:20px;color:#9da5aa}.nav button.on{background:transparent}.nav button.on span{color:var(--selection)}
+.line{background:#050607;border-color:#272c2f;border-left-color:#3b4549;border-radius:14px}.line.envelope{display:grid;grid-template-columns:38px minmax(0,1fr) auto auto;align-items:center}.line.extra-line{align-items:center}.bubble{background:#101416;color:#b9e7d0}.mini-actions{display:flex;align-items:center;gap:6px}.compact-icon{width:42px;min-width:42px;padding:0;font-size:24px;line-height:1}
+.field input,.field select,.debt input,.actions input{background:#000!important;border-color:#343a3e!important;color:#fff!important}.field input:focus,.field select:focus{outline-color:var(--soft-blue)}
+.secondary{background:#000}.secondary:hover{background:#0f1e26}.danger{background:#000}.check{background:#000}.check:hover{background:#0f1e26}.check.done{background:var(--money-green)}.check.edit{border-color:#4a7285;color:#bde4f3}.check.edit:hover{border-color:var(--soft-blue);background:#0f1e26}
+.preset{background:#000}.preset:hover{background:#0e1b22}.preset.on{background:rgba(234,242,120,.06)}
+.extra-reference{background:#050607}.extra-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:16px}.extra-metrics>div{min-width:0;padding:0 10px;border-left:1px solid #303639}.extra-metrics>div:first-child{padding-left:0;border-left:0}.extra-metrics small{display:block;color:var(--muted);font-size:10px}.extra-metrics b{display:block;margin-top:5px;color:#fff;font-size:16px;letter-spacing:-.6px}.extra-metrics b.mint{color:var(--mint)}.extra-metrics b.pink{color:var(--pink)}
+.notice,.notice.warn{background:#0d0f10;border-color:#3a4245;color:#e8ebed}.prompt{background:#000;border-color:#31373a;color:#eef1f2}.empty{border-color:#343b3f}.toast{background:#fff;color:#060809;box-shadow:none}
+@media(max-width:370px){.extra-metrics b{font-size:13px}.line.envelope{grid-template-columns:34px minmax(0,1fr) auto auto}.mini-actions{gap:4px}.check{width:38px;height:38px}}
+/* Private-beta shell: visible status, no pretend cloud features. */
+.brand-icon{object-fit:cover;background:#000;padding:0;box-shadow:none}
+.beta-strip{display:flex;align-items:center;gap:8px;margin:18px 0 -6px;color:#d7dfdb;font-size:12px}.beta-strip::before{content:"";width:7px;height:7px;border-radius:50%;background:#6fdbad;box-shadow:0 0 0 4px rgba(111,219,173,.12)}
+.top-account{display:grid;justify-items:end;gap:7px}.account-chip{display:flex;align-items:center;gap:7px;min-height:32px;padding:5px 8px 5px 6px;border:1px solid #343a3e;border-radius:999px;background:#000;color:#eaf0ed;font-size:10px;font-weight:800}.account-chip:hover{border-color:#8dc5da;background:#0a1115}.account-orb{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#174c3b;color:#dff8ea;font-size:10px}.account-orb.local{background:#2a3034;color:#d7dcdf}.account-chip small{display:block;color:var(--muted);font-size:9px;font-weight:700}
+.account-card{margin-bottom:13px}.account-card .row{align-items:center}.account-card p{margin:8px 0 0}.account-state{display:inline-flex;align-items:center;gap:6px;max-width:100%;margin-top:11px;padding:8px 10px;border:1px solid #343b3f;border-radius:12px;background:#000;color:#dce2e3;font-size:12px}.account-state i{width:7px;height:7px;border-radius:50%;background:#6fdbad;flex:0 0 auto}.account-state.warn i{background:#eaf278}.account-state.error i{background:#ff9887}.provider-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}.provider-row button{min-width:0;padding:9px 7px;font-size:11px}.provider-row span{display:block;font-size:15px;line-height:1.1;margin-bottom:3px}.beta-actions{margin-top:12px}.notification-card{margin-top:13px}.install-help{margin:10px 0 0;color:var(--muted);font-size:11px;line-height:1.35}.report-field{margin-top:12px}.report-field input{width:100%;min-height:46px;border:1px solid #343a3e;border-radius:13px;background:#000;color:#fff;padding:11px}.report-field input:focus{outline:2px solid var(--soft-blue);outline-offset:1px}
+@media(max-width:390px){.top{align-items:flex-start}.top-account{justify-items:start}.provider-row{grid-template-columns:1fr}.provider-row button{display:flex;align-items:center;justify-content:center;gap:6px}.provider-row span{display:inline;margin:0}.account-chip small{display:none}}
+</style>
+</head>
+<body>
+<section class="setup" id="setup">
+  <div class="card">
+    <div class="brand"><img class="mark brand-icon" src="mi-quincena-icon.svg" alt="">Mi Quincena <small class="muted">· con Arito IA</small></div>
+    <p class="eyebrow">Finanzas personales, sin juicio</p>
+    <h1>Tu dinero merece un plan que sí se adapte a vos.</h1>
+    <p class="muted">Podés usar el presupuesto que ya armamos o empezar limpia y meter solo tus propios datos.</p>
+    <p class="beta-strip">Beta privada · cuentas y sincronización preparadas</p>
+    <div class="start-grid">
+      <button class="start" id="startPreset"><span>✦</span><strong>Usar mi plan precargado</strong><span class="muted">Quincena, Gollo, Kölbi, lentes, gym, pasajes, comida, renta y ruta de deudas.</span></button>
+      <button class="start" id="startBlank"><span>◌</span><strong>Empezar desde cero</strong><span class="muted">Todo vacío, editable y solo tuyo desde el primer paso.</span></button>
+    </div>
+    <p class="privacy" id="privacyMode">Privado por diseño: no conecta bancos ni SINPE. De momento se guarda solo en este teléfono.</p>
+    <p class="phone-tip">⌁ Hecha para usarla con una mano desde tu teléfono.</p>
+  </div>
+</section>
+
+<main class="app hide" id="app">
+  <header class="top">
+    <div><p class="eyebrow">Mi dinero, mi ritmo</p><h1>Hola, <span id="userName">amix</span> ✦</h1><p id="cycleLabel">Quincena activa</p></div>
+    <div class="top-account"><span class="status" id="incomeStatus">Ingreso por confirmar</span><button class="account-chip" id="openAccount" type="button" aria-label="Abrir cuenta de la beta"><span class="account-orb local" id="accountOrb">⌁</span><span id="accountChipText">En este teléfono<small>Cuenta beta</small></span></button></div>
+  </header>
+  <nav class="nav" aria-label="Navegación principal">
+    <button class="on" data-page="home" aria-current="page" aria-label="Inicio" title="Inicio"><span>⌂</span></button>
+    <button data-page="budget" aria-label="Sobres" title="Sobres"><span>◫</span></button>
+    <button data-page="debts" aria-label="Deudas" title="Deudas"><span>↘</span></button>
+    <button data-page="pies" aria-label="Ingresos extra" title="Ingresos extra"><span>✦</span></button>
+    <button data-page="plan" aria-label="Ajustes" title="Ajustes"><span>⚙</span></button>
+  </nav>
+
+  <section class="page on" id="home">
+    <div class="grid two">
+      <article class="card hero">
+        <p>Disponible real para gastar</p><div class="big" id="available">₡0</div>
+        <small id="availableHelp">Primero confirmá tu quincena.</small>
+        <div class="actions" style="margin-top:14px"><button class="primary mint-btn" id="goIncome">Confirmar salario</button><button class="secondary" data-go="budget">Ver sobres</button></div>
+      </article>
+      <article class="card ai">
+        <strong>✦ Arito IA local</strong><p id="insight">Voy a ayudarte a decidir qué es realmente dinero libre.</p>
+        <div class="actions"><button class="primary" data-go="debts" id="nextAction">Ver siguiente paso</button><button class="secondary" id="askArito">Preguntarle algo</button></div>
+      </article>
+    </div>
+    <div class="grid three" style="margin-top:13px">
+      <article class="card kpi"><small>Reservado en sobres</small><b id="reserved">₡0</b><small id="reservedSub">Cuentas + colchón</small></article>
+      <article class="card kpi"><small>Extra para deudas</small><b class="purple" id="attack">₡0</b><small id="attackSub">Después de lo esencial</small></article>
+      <article class="card kpi"><small>Utilidad extra cobrada</small><b class="mint" id="pieProfit">₡0</b><small>Ventas − capital.</small></article>
+    </div>
+    <div class="grid two" style="margin-top:13px">
+      <article class="card"><div class="row"><div><b>Próximos sobres</b><small class="muted">No son dinero libre hasta cubrirlos.</small></div><button class="secondary" data-go="budget">Ver</button></div><div class="list" id="homeBills"></div></article>
+      <article class="card"><div class="row"><div><b>Ruta de libertad</b><small class="muted">Una deuda a la vez.</small></div><button class="secondary" data-go="debts">Abrir</button></div><div class="list" id="homeDebts"></div></article>
+    </div>
+    <article class="card" style="margin-top:13px">
+      <div class="row"><div><b>Preguntale a Arito</b><small class="muted">Probá: “¿puedo gastar 5000?”, “recibí 240000 de salario” o “gasté 3000 en Uber”.</small></div><span class="tag goal">asistente local</span></div>
+      <div class="actions" style="margin-top:12px"><input id="aiInput" style="flex:1;min-width:210px;border:1px solid var(--line);border-radius:10px;padding:10px;background:#0d1623;color:white" placeholder="Escribí aquí"><button class="primary" id="aiSend">Analizar</button></div>
+      <div class="notice hide" id="aiAnswer" style="margin-top:10px"></div>
+    </article>
+  </section>
+
+  <section class="page" id="budget">
+    <div class="top"><div><p class="eyebrow">Tu ciclo, sin sorpresas</p><h1>Quincena</h1><p>Separá primero lo que ya tiene destino.</p></div><div class="actions"><button class="secondary cycle" data-cycle="30">Pago 30</button><button class="secondary cycle" data-cycle="15">Pago 15</button></div></div>
+    <div class="grid two">
+      <article class="card"><b>Ingreso de esta quincena</b><p class="help">El estimado sirve para planear. Solo el confirmado es dinero real.</p>
+        <form class="form" id="incomeForm"><div class="field"><label>Esperado</label><input id="expectedInput" type="number" min="0" inputmode="decimal"></div><div class="field"><label>Confirmado</label><input id="confirmedInput" type="number" min="0" inputmode="decimal" placeholder="Cuando caiga el depósito"></div><div class="form-actions"><button class="primary">Guardar ingreso</button></div></form><div class="notice" id="incomeNote" style="margin-top:10px"></div>
+        <div class="preset-row" aria-label="Escenarios de ingreso">
+          <button type="button" class="preset" data-preset="calma"><span>Modo calma</span><b>₡210k</b></button>
+          <button type="button" class="preset" data-preset="normal"><span>Normal</span><b>₡240k</b></button>
+          <button type="button" class="preset" data-preset="bono"><span>Con bono</span><b>₡262.150</b></button>
+        </div>
+      </article>
+      <article class="card"><b>Gasto flexible</b><p class="help">Solo lo que no está en tus sobres: Uber, cafés, farmacia, etc.</p>
+        <form class="form" id="expenseForm"><div class="field"><label>Descripción</label><input id="expenseName" required placeholder="Ej. Uber"></div><div class="field"><label>Monto</label><input id="expenseAmount" type="number" min="1" required></div><div class="form-actions"><button class="primary">Registrar gasto</button></div></form>
+      </article>
+    </div>
+    <article class="card" style="margin-top:13px"><div class="row"><div><b>Sobres de este pago</b><small class="muted">Usá ✎ si cambió el monto, fecha o nombre.</small></div><button class="secondary compact-icon" id="addBill" type="button" aria-label="Crear un sobre" title="Crear un sobre">＋</button></div><div class="list" id="billList"></div>
+      <form class="form hide" id="billForm"><div class="field"><label>Nombre</label><input id="billName" required></div><div class="field"><label>Monto</label><input id="billAmount" type="number" min="1" inputmode="decimal" required></div><div class="field"><label>Vence</label><select id="billDue"><option value="30">Pago 30</option><option value="15">Pago 15</option><option value="both">Ambas quincenas</option></select></div><div class="field"><label>Tipo</label><select id="billType"><option value="essential">Esencial</option><option value="debt">Deuda</option><option value="other">Otro</option></select></div><div class="form-actions"><button class="secondary" type="button" id="cancelBill">Cancelar</button><button class="primary" id="saveBill">Guardar sobre</button></div></form>
+    </article>
+    <article class="card" style="margin-top:13px"><div class="row"><div><b>Movimientos de esta quincena</b><small class="muted">Restan de tu dinero flexible.</small></div><span class="tag" id="spendTag">₡0</span></div><div class="list" id="txList"></div></article>
+  </section>
+
+  <section class="page" id="debts">
+    <div class="top"><div><p class="eyebrow">Primero libertad, luego antojos</p><h1>Deudas</h1><p>Pagá todos los mínimos; el extra va a una sola deuda.</p></div><span class="status" id="debtStatus">Saldo por confirmar</span></div>
+    <article class="card"><div class="row"><div><b>Tu ataque recomendado</b><small class="muted" id="debtSummary">Agregá los saldos de cancelación para calcular una fecha real.</small></div><span class="tag goal">Lentes → Gollo → Kölbi</span></div><div class="notice warn" style="margin-top:11px">Antes de mandar un abono fuerte, pedí el <b>saldo de cancelación anticipada</b> y confirmá que el pago extra reduzca capital o plazo, no solo la próxima cuota.</div></article>
+    <div class="debt-grid" id="debtList" style="margin-top:13px"></div>
+    <div class="actions" style="margin-top:13px"><button class="secondary" id="addDebt">+ Añadir deuda</button></div>
+  </section>
+
+  <section class="page" id="pies">
+    <div class="top"><div><p class="eyebrow">Lo que generás por fuera</p><h1>Ingresos extra</h1><p>Emprendimiento, venta ocasional o freelance: registrá la utilidad real, no solo la venta.</p></div><span class="status good" id="pieTarget">Destino: prioridad</span></div>
+    <div class="grid two"><article class="card pie-hero"><small class="muted">Utilidad cobrada sin asignar</small><div class="big" id="pieAvailable">₡0</div><p class="help">Podés enviarla a tu siguiente deuda cuando ya esté cobrada.</p><button class="primary mint-btn" id="sendProfit">Enviar utilidad a prioridad</button></article><article class="card extra-reference"><small class="muted" id="extraCalcCaption">Ref. 20 ventas × ₡2.000</small><div class="extra-metrics"><div><small>Ventas</small><b id="extraSales">₡40.000</b></div><div><small>Capital</small><b id="extraCapital">₡17.500</b></div><div><small>Utilidad</small><b class="mint" id="extraProfit">₡22.500</b></div></div><p class="help">Se calcula sola: ventas menos capital.</p></article></div>
+    <article class="card" style="margin-top:13px"><div class="row"><div><b id="extraFormTitle">Registrar ingreso</b><small class="muted">Si el precio cambió, registralo como otra venta o editá la entrada.</small></div><button class="secondary compact-icon hide" type="button" id="cancelPie" aria-label="Cancelar edición" title="Cancelar edición">×</button></div><form class="form" id="pieForm"><div class="field wide"><label>Origen / nombre</label><input id="pieName" value="Pie de limón 8 oz" required></div><div class="field"><label>Tipo</label><select id="pieSource"><option value="emprendimiento">Emprendimiento</option><option value="freelance">Freelance</option><option value="venta">Venta ocasional</option><option value="otro">Otro</option></select></div><div class="field"><label>Cantidad</label><input id="pieUnits" type="number" min="1" inputmode="decimal" value="20"></div><div class="field"><label>Precio por venta</label><input id="piePrice" type="number" min="0" inputmode="decimal" value="2000"></div><div class="field wide"><label>Precios individuales <small>(opcional)</small></label><input id="piePrices" inputmode="decimal" placeholder="Ej. 2000, 2000, 2500"><small class="help">Si lo llenás, la app suma esos precios y no usa Cantidad × Precio.</small></div><div class="field"><label>Capital / costo total</label><input id="pieCost" type="number" min="0" inputmode="decimal" value="17500"></div><div class="field"><label>¿Ya lo cobraste?</label><select id="pieCollected"><option value="yes">Sí, cobrado</option><option value="no">Aún pendiente</option></select></div><div class="form-actions"><button class="primary" id="savePie">Guardar ingreso</button></div></form><div class="list" id="pieList"></div></article>
+  </section>
+
+  <section class="page" id="plan">
+    <div class="top"><div><p class="eyebrow">Todo se puede ajustar</p><h1>Plan y ajustes</h1><p>Esta app no te juzga; te muestra el impacto antes de decidir.</p></div></div>
+    <article class="card account-card" id="accountCard"><div class="row"><div><b>Cuenta de la beta</b><small class="muted">Tu plan puede empezar en este teléfono y luego vivir en tu cuenta.</small></div><span class="tag goal">₡ · $ · €</span></div><div class="account-state" id="accountState"><i></i><span>Modo local: tu información no sale de este teléfono.</span></div><p class="help" id="accountDetail">Google será el primer acceso real. Apple y Facebook se activan solo cuando sus conexiones oficiales estén listas.</p><div class="provider-row" aria-label="Opciones de cuenta"><button class="secondary" id="connectGoogle" type="button"><span>G</span>Google</button><button class="secondary" id="connectApple" type="button" disabled title="Se habilita al configurar Sign in with Apple"><span>◉</span>Apple</button><button class="secondary" id="connectFacebook" type="button" disabled title="Se habilita al configurar Meta Login"><span>f</span>Facebook</button></div><div class="actions beta-actions"><button class="primary hide" id="syncCurrentPlan" type="button">Subir este plan a mi cuenta</button><button class="secondary hide" id="signOut" type="button">Cerrar sesión</button></div></article>
+    <div class="grid two"><article class="card"><b>Base personal</b><form class="form" id="settingsForm"><div class="field"><label>Nombre</label><input id="settingName"></div><div class="field"><label>Dinero ya disponible</label><input id="settingCash" type="number" min="0"></div><div class="field"><label>Pasaje por día</label><input id="settingFare" type="number" min="0"></div><div class="field"><label>Días de oficina por quincena</label><input id="settingDays" type="number" min="0"></div><div class="field wide"><label>Colchón mínimo que no se toca</label><input id="settingBuffer" type="number" min="0"></div><div class="form-actions"><button class="primary">Guardar ajustes</button></div></form></article><article class="card"><b>Resumen para pedirme ayuda</b><p class="help">Copialo cuando quieras que revisemos si algo cabe o cómo acelerar una deuda.</p><div class="prompt" id="prompt"></div><div class="report-field"><label class="field"><span>Correo para el reporte <small>(opcional)</small></span><input id="reportTo" type="email" inputmode="email" autocomplete="email" placeholder="tu-correo@gmail.com"></label></div><div class="actions" style="margin-top:10px"><button class="secondary" id="copyPrompt" type="button">Copiar resumen</button><button class="primary" id="emailReport" type="button">Abrir en Gmail</button></div></article></div>
+    <div class="grid two"><article class="card notification-card"><b>Recordatorios de quincena</b><p class="help" id="notificationStatus">No están activos. Si aceptás, esta app te recordará revisar pagos al abrirla el 15 o 30.</p><div class="actions"><button class="primary" id="enableNotifications" type="button">Activar recordatorios</button><button class="secondary hide" id="testNotification" type="button">Probar</button></div><p class="install-help">Para que lleguen aun con la app cerrada, la beta online añadirá push seguro. Siempre te pide permiso primero.</p></article><article class="card notification-card"><b>Instalar en tu teléfono</b><p class="help" id="installStatus">Cuando la beta esté publicada de forma segura, se instalará como app desde el navegador.</p><div class="actions"><button class="secondary" id="installApp" type="button">Cómo instalarla</button></div><p class="install-help hide" id="iosInstallHelp">En iPhone: abrí en Safari → Compartir → “Añadir a pantalla de inicio”.</p></article></div>
+    <article class="card" style="margin-top:13px"><b>Datos y respaldo</b><p class="help" id="dataPrivacyText">Tu plan se guarda solo en este teléfono. Podés descargar un respaldo cuando querás.</p><div class="actions"><button class="secondary" id="export" type="button">Descargar respaldo</button><button class="secondary" id="presetAgain" type="button">Cargar plan precargado</button><button class="danger" id="reset" type="button">Borrar todo y empezar desde cero</button></div></article>
+  </section>
+</main>
+<button class="quick-add hide" id="quickAdd" type="button" aria-label="Registrar un gasto rápido">＋</button>
+<div class="toast" id="toast"></div>
+
+<script src="mi-quincena-firebase-config.js"></script>
+<script src="mi-quincena-cloud.js"></script>
+<script>
+(function(){
+  var LEGACY_KEY='mi-quincena-arito-v1';
+  var DEVICE_KEY='mi-quincena-arito-beta-device';
+  var $=function(s){return document.querySelector(s)};
+  var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  var fmt=function(n){return new Intl.NumberFormat('es-CR',{style:'currency',currency:'CRC',maximumFractionDigits:0}).format(Math.round(Number(n)||0))};
+  var uid=function(p){return p+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7)};
+  function deviceId(){var id=localStorage.getItem(DEVICE_KEY);if(!id){id=uid('device');localStorage.setItem(DEVICE_KEY,id)}return id}
+  var deviceAccount={uid:deviceId(),provider:'device',email:'',displayName:''};
+  var activeAccount=deviceAccount;
+  var cloudStatus={mode:'local',configured:!!(window.MiQuincenaCloud&&window.MiQuincenaCloud.isConfigured&&window.MiQuincenaCloud.isConfigured())};
+  var cloudSyncReady=false;
+  var migrationCandidate=null;
+  var deferredInstallPrompt=null;
+  var S;
+  function storageKey(){return 'mi-quincena-arito-v2:'+activeAccount.uid}
+  function copyState(value){try{return JSON.parse(JSON.stringify(value))}catch(e){return null}}
+  function ensureState(state){
+    if(!state||typeof state!=='object')return null;
+    state.profile=state.profile||{};
+    state.bills=Array.isArray(state.bills)?state.bills:[];state.debts=Array.isArray(state.debts)?state.debts:[];state.paid=Array.isArray(state.paid)?state.paid:[];state.tx=Array.isArray(state.tx)?state.tx:[];state.pies=Array.isArray(state.pies)?state.pies:[];state.history=Array.isArray(state.history)?state.history:[];
+    state.meta=state.meta||{};state.meta.schema=2;state.meta.updatedAt=state.meta.updatedAt||null;
+    state.account=state.account||{};state.account.uid=activeAccount.uid;state.account.provider=activeAccount.provider;state.account.email=activeAccount.email||'';state.account.displayName=activeAccount.displayName||'';
+    state.preferences=state.preferences||{};if(typeof state.preferences.paymentReminders!=='boolean')state.preferences.paymentReminders=false;state.preferences.notificationPermission=state.preferences.notificationPermission||((window.Notification&&Notification.permission)||'default');state.preferences.reportTo=state.preferences.reportTo||'';state.preferences.timezone=state.preferences.timezone||Intl.DateTimeFormat().resolvedOptions().timeZone;state.preferences.lastReminderDate=state.preferences.lastReminderDate||'';
+    return state;
+  }
+  function base(prefill){
+    return ensureState({profile:{name:prefill?'Sharon':'',cycle:'30',cycleId:uid('cycle'),expected:prefill?210000:0,confirmed:0,cash:0,fare:prefill?1200:0,days:prefill?12:0,buffer:prefill?20000:0},
+    bills:prefill?[{id:'gollo',name:'Gollo',amount:50000,due:'30',type:'debt'},{id:'kolbi-bill',name:'Plan Kölbi',amount:40000,due:'30',type:'debt'},{id:'lenses-bill',name:'Lentes de contacto',amount:20000,due:'30',type:'debt'},{id:'gym',name:'Gym',amount:20000,due:'30',type:'essential'},{id:'food',name:'Comida',amount:35000,due:'both',type:'essential'},{id:'fare',name:'Pasajes',amount:0,due:'both',type:'essential',fare:true},{id:'rent',name:'Alquiler (mi parte)',amount:107500,due:'15',type:'essential'},{id:'electricity',name:'Luz (mi parte)',amount:6000,due:'15',type:'essential'},{id:'internet',name:'Internet (mi parte)',amount:8065,due:'15',type:'essential'}]:[],
+    debts:prefill?[{id:'lenses',name:'Lentes',minimum:20000,balance:null,priority:1},{id:'gollo',name:'Gollo',minimum:50000,balance:null,priority:2},{id:'kolbi',name:'Kölbi',minimum:40000,balance:null,priority:3}]:[],
+    paid:[],tx:[],pies:[],history:[]});
+  }
+  function load(){try{var raw=localStorage.getItem(storageKey());if(!raw&&activeAccount.provider==='device')raw=localStorage.getItem(LEGACY_KEY);return raw?ensureState(JSON.parse(raw)):null}catch(e){return null}}
+  function save(){if(!S)return;S=ensureState(S);S.meta.updatedAt=new Date().toISOString();localStorage.setItem(storageKey(),JSON.stringify(S));if(cloudSyncReady&&window.MiQuincenaCloud)window.MiQuincenaCloud.queueSave(S)}
+  function note(t){var x=$('#toast');x.textContent=t;x.classList.add('on');clearTimeout(x.timer);x.timer=setTimeout(function(){x.classList.remove('on')},2300)}
+  function bills(){return S.bills.filter(function(b){return b.due===S.profile.cycle||b.due==='both'})}
+  function billValue(b){return b.fare?(Number(S.profile.fare)||0)*(Number(S.profile.days)||0):Number(b.amount)||0}
+  function paid(b){return S.paid.some(function(p){return p.billId===b.id&&p.cycleId===S.profile.cycleId})}
+  function tx(){return S.tx.filter(function(t){return t.cycleId===S.profile.cycleId})}
+  function pricesIn(value){return String(value||'').split(/[,\s;]+/).map(function(x){return Number(x)}).filter(function(x){return Number.isFinite(x)&&x>=0})}
+  function gross(p){var prices=Array.isArray(p.prices)?p.prices:[];return prices.length?prices.reduce(function(sum,x){return sum+(Number(x)||0)},0):(Number(p.units)||0)*(Number(p.price)||0)}
+  function pieNet(p){return gross(p)-(Number(p.cost)||0)}
+  function pieProfit(){return S.pies.filter(function(p){return p.collected&&!p.sent}).reduce(function(s,p){return s+pieNet(p)},0)}
+  function income(){return (Number(S.profile.confirmed)||Number(S.profile.expected)||0)+Number(S.profile.cash||0)+pieProfit()}
+  function fixed(){return bills().reduce(function(s,b){return s+billValue(b)},0)}
+  function spent(){return tx().filter(function(t){return t.type!=='pie-abono'}).reduce(function(s,t){return s+(Number(t.amount)||0)},0)}
+  function free(){return income()-fixed()-spent()-Number(S.profile.buffer||0)}
+  function target(){var x=S.debts.filter(function(d){return d.balance===null||Number(d.balance)>0}).sort(function(a,b){return a.priority-b.priority});return x[0]||null}
+  function findDebt(id){return S.debts.find(function(d){return d.id===id})}
+  function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]})}
+  function tag(type){return type==='debt'?'debt':type==='essential'?'essential':''}
+  function betaSettings(){return window.MI_QUINCENA_BETA||{}}
+  function providerEnabled(name){var enabled=betaSettings().enabledProviders||['google'];return !!(cloudStatus.configured&&enabled.indexOf(name)>-1)}
+  function setAccountState(text,kind){var box=$('#accountState');if(!box)return;box.className='account-state'+(kind?' '+kind:'');var label=box.querySelector('span');if(label)label.textContent=text}
+  function updateAccountUI(){
+    var signed=cloudStatus.user,configured=!!cloudStatus.configured,mode=cloudStatus.mode||'local',name=signed&&(signed.displayName||signed.email)||'';
+    var chip=$('#accountChipText'),orb=$('#accountOrb');
+    if(chip)chip.innerHTML=(signed?esc(name||'Cuenta conectada'):'En este teléfono')+'<small>'+(signed?'Sincronización privada':'Cuenta beta')+'</small>';
+    if(orb){orb.textContent=signed?'✓':'⌁';orb.className='account-orb'+(signed?'':' local')}
+    if(mode==='ready')setAccountState('Cuenta conectada: tus cambios se sincronizan de forma privada.','');
+    else if(mode==='connecting'||mode==='loading')setAccountState('Conectando tu cuenta privada…','warn');
+    else if(mode==='not-invited')setAccountState('Esta cuenta todavía no tiene invitación para la beta.','error');
+    else if(mode==='error'||cloudStatus.message)setAccountState(cloudStatus.message||'No pude abrir la nube; tus datos locales siguen a salvo.','error');
+    else if(configured)setAccountState('La beta privada está lista para conectar una cuenta invitada.','warn');
+    else setAccountState('Modo local: tu información no sale de este teléfono.','');
+    var detail=$('#accountDetail');if(detail)detail.textContent=signed?'Cada cuenta conserva su propio plan. Si este es tu primer inicio, podés subir el plan que ya tenías.':configured?'Entrá con el proveedor que esté habilitado para la beta.':'Google será el primer acceso real. Apple y Facebook se activan solo cuando sus conexiones oficiales estén listas.';
+    [['Google','google'],['Apple','apple'],['Facebook','facebook']].forEach(function(item){var b=$('#connect'+item[0]);if(!b)return;b.disabled=!!signed||!providerEnabled(item[1]);b.title=providerEnabled(item[1])?'Conectar con '+item[0]:(configured?'Este proveedor todavía no está configurado.':'La beta requiere configurar el acceso seguro primero.')});
+    var move=$('#syncCurrentPlan'),out=$('#signOut');if(move)move.classList.toggle('hide',!(signed&&!cloudSyncReady&&S));if(out)out.classList.toggle('hide',!signed);
+    var privateText=signed?'Tu cuenta está conectada. No se enlazan bancos ni SINPE; el plan se sincroniza solo con esta cuenta.':'Privado por diseño: no conecta bancos ni SINPE. De momento se guarda solo en este teléfono.';
+    if($('#privacyMode'))$('#privacyMode').textContent=privateText;if($('#dataPrivacyText'))$('#dataPrivacyText').textContent=signed?'Tu plan también vive en tu cuenta beta. Descargá un respaldo cuando querás.':'Tu plan se guarda solo en este teléfono. Podés descargar un respaldo cuando querás.';
+  }
+  function reminderText(){var items=bills().slice(0,3).map(function(b){return b.name}).join(', ');return items?'Hoy revisá: '+items+'.':'Hoy toca revisar tus sobres y pagos.'}
+  function showNotification(title,body){
+    if(!('Notification'in window)||Notification.permission!=='granted')return;
+    if(navigator.serviceWorker&&navigator.serviceWorker.ready){navigator.serviceWorker.ready.then(function(reg){return reg.showNotification(title,{body:body,icon:'mi-quincena-icon.svg',badge:'mi-quincena-icon.svg',tag:'mi-quincena-recordatorio'})}).catch(function(){try{new Notification(title,{body:body})}catch(e){}})}
+    else{try{new Notification(title,{body:body})}catch(e){}}
+  }
+  function updateReminderUI(){
+    if(!S||!$('#notificationStatus'))return;var p=S.preferences||{},permission=('Notification'in window)?Notification.permission:'unsupported';
+    $('#notificationStatus').textContent=p.paymentReminders&&permission==='granted'?'Recordatorios activados: al abrir la app el 15 o 30 te avisa qué pagos revisar.':'No están activos. Si aceptás, esta app te recordará revisar pagos al abrirla el 15 o 30.';
+    $('#enableNotifications').textContent=p.paymentReminders&&permission==='granted'?'Recordatorios activos':'Activar recordatorios';$('#testNotification').classList.toggle('hide',!(p.paymentReminders&&permission==='granted'));
+  }
+  function checkQuincenaReminder(){
+    if(!S||!S.preferences||!S.preferences.paymentReminders||!('Notification'in window)||Notification.permission!=='granted')return;
+    var now=new Date(),day=now.getDate(),stamp=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+day;
+    if((day===15||day===30)&&S.preferences.lastReminderDate!==stamp){S.preferences.lastReminderDate=stamp;save();showNotification('Mi Quincena',reminderText())}
+  }
+  function requestNotifications(){
+    if(!('Notification'in window)){note('Este navegador no permite notificaciones aquí');return}
+    var finish=function(permission){S.preferences.paymentReminders=permission==='granted';S.preferences.notificationPermission=permission;S.preferences.timezone=Intl.DateTimeFormat().resolvedOptions().timeZone;save();render();if(permission==='granted')note('Listo. Probá el recordatorio o esperá tu próxima quincena.');else note(permission==='denied'?'Podés permitirlas desde ajustes del navegador.':'No activaste recordatorios.')};
+    if(Notification.permission==='default')Notification.requestPermission().then(finish);else finish(Notification.permission);
+  }
+  function testNotification(){showNotification('Mi Quincena','Prueba lista: '+reminderText());note('Te mandé una prueba de recordatorio.')}
+  function reportText(){return 'Reporte de Mi Quincena\n\n'+promptText()+'\n\nGenerado el '+new Date().toLocaleDateString('es-CR')}
+  function composeGmail(){var to=$('#reportTo').value.trim();S.preferences.reportTo=to;save();var params=new URLSearchParams({view:'cm',fs:'1',su:'Reporte de mi quincena',body:reportText()});if(to)params.set('to',to);window.open('https://mail.google.com/mail/?'+params.toString(),'_blank','noopener');note('Abrí un borrador de Gmail para que lo revisés antes de enviarlo.')}
+  function activateAccount(user){
+    var previous=S?copyState(S):null;
+    if(!user){activeAccount=deviceAccount;cloudSyncReady=false;migrationCandidate=null;var deviceState=load();if(deviceState)S=deviceState}
+    else{activeAccount={uid:user.uid,provider:user.providerId||'firebase',email:user.email||'',displayName:user.displayName||''};cloudSyncReady=false;var own=load();if(own){S=own;migrationCandidate=null}else migrationCandidate=previous}
+    if(S){S=ensureState(S);localStorage.setItem(storageKey(),JSON.stringify(S));render()}else updateAccountUI();
+  }
+  function receiveRemoteState(state){
+    if(state&&state.profile){S=ensureState(state);migrationCandidate=null;cloudSyncReady=true;localStorage.setItem(storageKey(),JSON.stringify(S));render()}
+    else{cloudSyncReady=false;if(activeAccount.provider!=='device'&&S&&!migrationCandidate)migrationCandidate=copyState(S);updateAccountUI()}
+  }
+  function startCloud(){
+    if(!window.MiQuincenaCloud)return;
+    window.MiQuincenaCloud.boot({onStatus:function(info){cloudStatus=info;updateAccountUI()},onUser:activateAccount,onState:receiveRemoteState});
+  }
+  function connectAccount(name){
+    if(!window.MiQuincenaCloud||!cloudStatus.configured){note('La cuenta beta se activa cuando configuremos el proyecto seguro y la lista de invitadas.');return}
+    window.MiQuincenaCloud.connect(name).catch(function(err){note(err&&err.message?err.message:'No pude abrir ese acceso todavía.')});
+  }
+  function syncCurrentPlan(){
+    if(!S||!cloudStatus.user||!window.MiQuincenaCloud){note('Primero conectá tu cuenta beta.');return}
+    cloudSyncReady=true;migrationCandidate=null;save();window.MiQuincenaCloud.pushNow(S).then(function(){updateAccountUI();note('Tu plan ya quedó guardado en la cuenta beta.')}).catch(function(){cloudSyncReady=false;updateAccountUI();note('No pude subirlo todavía; el respaldo local sigue intacto.')});
+  }
+  function installPwa(){
+    if(deferredInstallPrompt){deferredInstallPrompt.prompt();deferredInstallPrompt.userChoice.then(function(){deferredInstallPrompt=null;$('#installStatus').textContent='La instalación se está confirmando en tu navegador.'});return}
+    $('#iosInstallHelp').classList.remove('hide');note(location.protocol==='https:'?'En iPhone usá Compartir → Añadir a pantalla de inicio.':'Primero hay que abrir la beta desde un enlace HTTPS para instalarla.')
+  }
+  function registerPwa(){
+    var secure=location.protocol==='https:'||location.hostname==='localhost';
+    if('serviceWorker'in navigator&&secure)navigator.serviceWorker.register('./mi-quincena-sw.js').then(function(){$('#installStatus').textContent='La app está lista para instalarse desde este navegador.'}).catch(function(){});
+    window.addEventListener('beforeinstallprompt',function(event){event.preventDefault();deferredInstallPrompt=event;$('#installApp').textContent='Instalar app';$('#installStatus').textContent='Ya podés instalar Mi Quincena en tu teléfono.'});
+    window.addEventListener('appinstalled',function(){deferredInstallPrompt=null;$('#installStatus').textContent='Mi Quincena ya está instalada en este teléfono.'});
+  }
+  function render(){
+    if(!S)return;
+    var t=target(), avail=free(), conf=Number(S.profile.confirmed)>0;
+    $('#userName').textContent=S.profile.name||'amix';
+    $('#cycleLabel').textContent='Quincena activa · pago del '+S.profile.cycle;
+    $('#incomeStatus').textContent=conf?'Ingreso confirmado':'Ingreso por confirmar';
+    $('#incomeStatus').className='status'+(conf?' good':'');
+    $('#available').textContent=fmt(Math.max(0,avail));
+    $('#availableHelp').textContent=conf?'Ya descontando sobres, colchón y gastos flexibles.':'Es una proyección; confirmá el depósito antes de usarlo.';
+    $('#reserved').textContent=fmt(fixed()+Number(S.profile.buffer||0));
+    $('#reservedSub').textContent=fmt(fixed())+' cuentas + '+fmt(S.profile.buffer)+' colchón';
+    $('#attack').textContent=fmt(Math.max(0,avail));
+    $('#attackSub').textContent=avail>0?'Extra sugerido para '+(t?t.name:'tu meta'):'Primero cubrí los esenciales';
+    $('#pieProfit').textContent=fmt(pieProfit());$('#pieProfit').className=pieProfit()>=0?'mint':'pink';
+    var insight='';
+    if(!conf) insight='Primero confirmá el monto real de tu quincena. El estimado sirve para planear, pero no es dinero para gastar todavía.';
+    else if(avail<0) insight='Alerta: faltan '+fmt(Math.abs(avail))+' para cubrir sobres, colchón y gastos. Pausá compras no esenciales antes de tocar pasajes o comida.';
+    else if(t&&t.balance===null) insight='Te quedan '+fmt(avail)+'. Pedí el saldo de cancelación de '+t.name+' para que tu abono sí acorte la deuda.';
+    else if(t) insight='Tu siguiente paso es '+t.name+'. Si abonás '+fmt(avail)+' hoy, no tocás Kölbi ni tus esenciales.';
+    else insight='Tu ruta de deudas está libre. Ese hábito ahora puede ir a colchón, curso IPT o una meta nueva.';
+    $('#insight').textContent=insight;
+    $('#nextAction').textContent=t?'Abrir '+t.name:'Ver sobres';
+    $('#nextAction').onclick=function(){page(t?'debts':'budget')};
+    $('#goIncome').textContent=conf?'Editar ingreso':'Confirmar salario';
+    homeBills();homeDebts();budget();debts();pies();settings();prompt();updateAccountUI();updateReminderUI();checkQuincenaReminder();
+  }
+  function homeBills(){var box=$('#homeBills');box.innerHTML='';var items=bills();if(!items.length){box.innerHTML='<div class="empty">Aún no tenés sobres. Creá el primero desde Quincena.</div>';return}items.slice(0,4).forEach(function(b){var row=document.createElement('div');row.className='line';row.innerHTML='<div><b>'+esc(b.name)+'</b><small>'+((b.due==='both')?'cada quincena':'pago '+b.due)+(paid(b)?' · pagado':'')+'</small></div><div style="text-align:right"><b>'+fmt(billValue(b))+'</b><br><span class="tag '+tag(b.type)+'">'+b.type+'</span></div>';box.appendChild(row)})}
+  function homeDebts(){var box=$('#homeDebts');box.innerHTML='';if(!S.debts.length){box.innerHTML='<div class="empty">Agregá tu primera deuda para crear una ruta.</div>';return}S.debts.slice().sort(function(a,b){return a.priority-b.priority}).forEach(function(d){var done=d.balance!==null&&Number(d.balance)<=0;var row=document.createElement('div');row.className='line';row.innerHTML='<div><b>'+(done?'✓ ':'')+esc(d.name)+'</b><small>Mínimo '+fmt(d.minimum)+' · prioridad '+d.priority+'</small></div><b class="'+(done?'mint':'')+'">'+(d.balance===null?'Saldo pendiente':fmt(d.balance))+'</b>';box.appendChild(row)})}
+  function budget(){
+    $$('.cycle').forEach(function(b){var selected=b.dataset.cycle===S.profile.cycle;b.className='secondary cycle'+(selected?' on':'');b.setAttribute('aria-pressed',String(selected))});
+    $('#expectedInput').value=S.profile.expected||'';
+    $('#confirmedInput').value=S.profile.confirmed||'';
+    $('#incomeNote').textContent=Number(S.profile.confirmed)>0?'Disponible protegido ahora: '+fmt(Math.max(0,free()))+'.':'Planeando con '+fmt(S.profile.expected||0)+'. Confirmalo al caer.';
+    var incomeModes={calma:210000,normal:240000,bono:262150};
+    $$('.preset').forEach(function(b){var selected=Number(S.profile.expected)===incomeModes[b.dataset.preset];b.classList.toggle('on',selected);b.setAttribute('aria-pressed',String(selected))});
+    var box=$('#billList');box.innerHTML='';var list=bills();
+    if(!list.length)box.innerHTML='<div class="empty">Empezaste desde cero. Agregá tu primer sobre arriba.</div>';
+    list.forEach(function(b){var row=document.createElement('div');row.className='line envelope'+(paid(b)?' paid':'');var icon=b.type==='debt'?'↘':b.fare?'⌁':'◫';row.innerHTML='<span class="bubble">'+icon+'</span><div><b>'+esc(b.name)+'</b><small>'+((b.due==='both')?'cada quincena':'pago '+b.due)+' · '+b.type+(paid(b)?' · pagado':'')+'</small></div><b>'+fmt(billValue(b))+'</b>';var actions=document.createElement('div');actions.className='mini-actions';var edit=document.createElement('button');edit.className='check edit';edit.textContent='✎';edit.setAttribute('aria-label','Editar sobre: '+b.name);edit.title='Editar sobre';edit.onclick=function(){openBillForm(b)};var check=document.createElement('button');check.className='check'+(paid(b)?' done':'');check.textContent=paid(b)?'✓':'○';check.setAttribute('aria-label',(paid(b)?'Marcar pendiente: ':'Marcar pagado: ')+b.name);check.onclick=function(){togglePaid(b.id)};actions.appendChild(edit);actions.appendChild(check);row.appendChild(actions);box.appendChild(row)});
+    $('#spendTag').textContent=fmt(spent())+' gastado';
+    var txbox=$('#txList');txbox.innerHTML='';var arr=tx().slice().reverse();if(!arr.length)txbox.innerHTML='<div class="empty">No hay gastos flexibles registrados todavía.</div>';
+    arr.forEach(function(x){var row=document.createElement('div');row.className='line';row.innerHTML='<div><b>'+esc(x.name)+'</b><small>'+x.type+'</small></div><div><b>'+fmt(x.amount)+'</b> </div>';var del=document.createElement('button');del.className='check delete';del.textContent='×';del.setAttribute('aria-label','Eliminar movimiento: '+x.name);del.onclick=function(){S.tx=S.tx.filter(function(y){return y.id!==x.id});save();render();note('Movimiento eliminado')};row.lastChild.appendChild(del);txbox.appendChild(row)});
+  }
+  function togglePaid(id){var i=S.paid.findIndex(function(p){return p.billId===id&&p.cycleId===S.profile.cycleId});if(i>-1){S.paid.splice(i,1);note('Marcado pendiente')}else{S.paid.push({billId:id,cycleId:S.profile.cycleId});note('Marcado pagado')}save();render()}
+  function resetBillForm(){var form=$('#billForm');form.reset();form.dataset.editId='';$('#saveBill').textContent='Guardar sobre';form.classList.add('hide')}
+  function openBillForm(b){var form=$('#billForm');form.dataset.editId=b?b.id:'';$('#billName').value=b?b.name:'';$('#billAmount').value=b?billValue(b):'';$('#billDue').value=b?b.due:'30';$('#billType').value=b?b.type:'essential';$('#saveBill').textContent=b?'Guardar cambios':'Guardar sobre';form.classList.remove('hide');setTimeout(function(){$('#billName').focus()},60)}
+  function debts(){
+    var box=$('#debtList');box.innerHTML='';var t=target(), allKnown=S.debts.length&&S.debts.every(function(d){return d.balance!==null});
+    $('#debtStatus').textContent=allKnown?'Saldos completos':'Saldo por confirmar';$('#debtStatus').className='status'+(allKnown?' good':'');
+    $('#debtSummary').textContent=t?(t.balance===null?'Tu prioridad es '+t.name+'. Guardá su saldo de cancelación para estimar cuántas quincenas faltan.':'Extra disponible hoy: '+fmt(Math.max(0,free()))+'.'): 'Sin deudas abiertas registradas.';
+    if(!S.debts.length){box.innerHTML='<div class="empty">Aún no hay deudas. Podés agregar una cuando quieras.</div>';return}
+    S.debts.slice().sort(function(a,b){return a.priority-b.priority}).forEach(function(d){var done=d.balance!==null&&Number(d.balance)<=0;var card=document.createElement('article');card.className='card debt';var progress=d.balance===null?8:(d.start?Math.max(5,100-Number(d.balance)/d.start*100):8);card.innerHTML='<div class="row"><div><span class="tag '+(done?'essential':'debt')+'">'+(done?'Liquidada':'Prioridad '+d.priority)+'</span><h3>'+esc(d.name)+'</h3><small class="small">Mínimo '+fmt(d.minimum)+' · '+(d===t?'objetivo actual':'mantener al día')+'</small></div></div><div class="amount '+(done?'mint':'')+'">'+(d.balance===null?'Agregá saldo':fmt(d.balance))+'</div><div class="progress"><i style="width:'+progress+'%"></i></div><small class="small">'+estimate(d)+'</small>';var input=document.createElement('input');input.type='number';input.min='0';input.placeholder=d.balance===null?'Saldo pendiente ₡':'Abono extra ₡';var btn=document.createElement('button');btn.className='primary';btn.textContent=d.balance===null?'Guardar saldo':'Abonar extra';btn.onclick=function(){var a=Number(input.value)||0;if(a<=0){note('Escribí un monto');return}if(d.balance===null){d.balance=a;d.start=a;save();render();note('Saldo guardado')}else{d.balance=Math.max(0,Number(d.balance)-a);S.tx.push({id:uid('tx'),cycleId:S.profile.cycleId,name:'Abono extra a '+d.name,amount:a,type:'abono'});save();render();note('Abono registrado')}};card.appendChild(input);card.appendChild(btn);var edit=document.createElement('button');edit.className='secondary';edit.style.marginTop='7px';edit.textContent='Editar cuota / prioridad';edit.onclick=function(){editDebt(d)};card.appendChild(edit);box.appendChild(card)})}
+  function estimate(d){if(d.balance===null)return 'Falta saldo de cancelación.';if(Number(d.balance)<=0)return '¡Lista! Esta cuota se puede rodar a la siguiente deuda.';var pace=Math.max(1,Number(d.minimum)+(d===target()?Math.max(0,free()):0));return 'Estimado: '+Math.ceil(Number(d.balance)/pace)+' quincena(s), sin interés futuro.'}
+  function editDebt(d){var min=prompt('Cuota mínima (₡)',d.minimum);if(min===null)return;var p=prompt('Prioridad (1 primero)',d.priority);if(p===null)return;d.minimum=Math.max(0,Number(min)||0);d.priority=Math.max(1,Number(p)||1);S.debts.sort(function(a,b){return a.priority-b.priority}).forEach(function(x,i){x.priority=i+1});save();render();note('Deuda actualizada')}
+  function extraSource(p){var labels={emprendimiento:'Emprendimiento',freelance:'Freelance',venta:'Venta ocasional',otro:'Otro ingreso'};var key=typeof p==='string'?p:(p&&p.source);return labels[key]||'Ingreso extra'}
+  function updateExtraPreview(){var custom=pricesIn($('#piePrices').value),u=custom.length?custom.length:Math.max(0,Number($('#pieUnits').value)||0),p=Math.max(0,Number($('#piePrice').value)||0),c=Math.max(0,Number($('#pieCost').value)||0),sales=custom.length?custom.reduce(function(sum,x){return sum+x},0):u*p,net=sales-c;$('#extraSales').textContent=fmt(sales);$('#extraCapital').textContent=fmt(c);$('#extraProfit').textContent=fmt(net);$('#extraProfit').className=net>=0?'mint':'pink';$('#extraCalcCaption').textContent=custom.length?'Ref. '+u+' '+(u===1?'venta':'ventas')+' · precios individuales · '+extraSource($('#pieSource').value):'Ref. '+u+' '+(u===1?'venta':'ventas')+' × '+fmt(p)+' · '+extraSource($('#pieSource').value)}
+  function resetExtraForm(){var form=$('#pieForm');form.reset();form.dataset.editId='';$('#pieName').value='Pie de limón 8 oz';$('#pieSource').value='emprendimiento';$('#pieUnits').value=20;$('#piePrice').value=2000;$('#piePrices').value='';$('#pieCost').value=17500;$('#pieCollected').value='yes';$('#extraFormTitle').textContent='Registrar ingreso';$('#savePie').textContent='Guardar ingreso';$('#cancelPie').classList.add('hide');updateExtraPreview()}
+  function openExtraForm(p){if(p.sent){note('Ese ingreso ya fue enviado a una deuda y quedó bloqueado para no desordenar el abono');return}var form=$('#pieForm');form.dataset.editId=p.id;$('#pieName').value=p.name||'';$('#pieSource').value=p.source||'emprendimiento';$('#pieUnits').value=Number(p.units)||1;$('#piePrice').value=Number(p.price)||0;$('#piePrices').value=Array.isArray(p.prices)&&p.prices.length?p.prices.join(', '):'';$('#pieCost').value=Number(p.cost)||0;$('#pieCollected').value=p.collected?'yes':'no';$('#extraFormTitle').textContent='Editar ingreso';$('#savePie').textContent='Guardar cambios';$('#cancelPie').classList.remove('hide');updateExtraPreview();page('pies');setTimeout(function(){$('#pieName').focus()},60)}
+  function pies(){var t=target(),profit=pieProfit();$('#pieTarget').textContent='Destino: '+(t?t.name:'tu meta');$('#pieAvailable').textContent=fmt(profit);$('#sendProfit').disabled=profit<=0||!t;updateExtraPreview();var box=$('#pieList');box.innerHTML='';if(!S.pies.length){box.innerHTML='<div class="empty">Aún no hay ingresos extra. Registrá el primero arriba.</div>';return}S.pies.slice().reverse().forEach(function(p){var sales=gross(p),net=pieNet(p),sent=!!p.sent,row=document.createElement('div');row.className='line extra-line'+(sent?' paid':'');row.innerHTML='<div><b>'+esc(p.name)+'</b><small>'+extraSource(p)+' · '+p.units+' '+(Number(p.units)===1?'venta':'ventas')+' · ventas '+fmt(sales)+' · capital '+fmt(p.cost)+'</small></div><div style="text-align:right"><b class="'+(net>=0?'mint':'pink')+'">'+fmt(net)+'</b><br><span class="tag '+(sent||p.collected?'essential':'goal')+'">'+(sent?'asignada a deuda':p.collected?'cobrada':'pendiente')+'</span></div>';var actions=document.createElement('div');actions.className='mini-actions';var edit=document.createElement('button');edit.className='check edit';edit.textContent='✎';edit.disabled=sent;edit.setAttribute('aria-label','Editar ingreso: '+p.name);edit.title=sent?'Ya fue asignado a una deuda':'Editar ingreso';edit.onclick=function(){openExtraForm(p)};var del=document.createElement('button');del.className='check delete';del.textContent='×';del.disabled=sent;del.setAttribute('aria-label','Eliminar ingreso: '+p.name);del.title=sent?'Ya fue asignado a una deuda':'Eliminar ingreso';del.onclick=function(){S.pies=S.pies.filter(function(x){return x.id!==p.id});save();render();note('Ingreso eliminado')};actions.appendChild(edit);actions.appendChild(del);row.appendChild(actions);box.appendChild(row)})}
+  function sendProfit(){var t=target(),p=pieProfit();if(!t||p<=0){note('No hay utilidad positiva cobrada para enviar');return}S.pies.forEach(function(x){if(x.collected&&!x.sent)x.sent=true});if(t.balance!==null)t.balance=Math.max(0,Number(t.balance)-p);S.tx.push({id:uid('tx'),cycleId:S.profile.cycleId,name:'Utilidad extra → '+t.name,amount:p,type:'pie-abono'});save();render();note('Mandaste '+fmt(p)+' de utilidad a '+t.name+' ✦')}
+  function settings(){$('#settingName').value=S.profile.name||'';$('#settingCash').value=S.profile.cash||'';$('#settingFare').value=S.profile.fare||'';$('#settingDays').value=S.profile.days||'';$('#settingBuffer').value=S.profile.buffer||'';$('#reportTo').value=(S.preferences&&S.preferences.reportTo)||''}
+  function promptText(){var t=target();return 'Revisa mi quincena en Costa Rica. Ingreso '+(S.profile.confirmed?'confirmado':'esperado')+': '+fmt(S.profile.confirmed||S.profile.expected)+'. Sobres de este pago: '+fmt(fixed())+'. Colchón: '+fmt(S.profile.buffer)+'. Gastos flexibles: '+fmt(spent())+'. Disponible protegido: '+fmt(free())+'. Prioridad: '+(t?t.name:'sin deuda')+'. Utilidad extra cobrada: '+fmt(pieProfit())+'. Ayudame a decidir sin tocar renta, comida, pasajes ni pagos mínimos.'}
+  function prompt(){$('#prompt').textContent=promptText()}
+  function page(id){$$('.page').forEach(function(p){p.classList.toggle('on',p.id===id)});$$('.nav button').forEach(function(b){var selected=b.dataset.page===id;b.classList.toggle('on',selected);b.setAttribute('aria-current',selected?'page':'false')});scrollTo({top:0,behavior:'smooth'})}
+  function start(prefill){S=base(prefill);if(activeAccount.provider!=='device'&&!cloudSyncReady)migrationCandidate=copyState(S);save();$('#setup').classList.add('hide');$('#app').classList.remove('hide');$('#quickAdd').classList.remove('hide');render();note(prefill?'Plan precargado listo':'Espacio desde cero listo')}
+  function numberIn(text){var m=String(text).match(/(\d[\d.,\s]*)/);return m?Number(m[1].replace(/[.,\s]/g,''))||0:0}
+  function ai(){var q=$('#aiInput').value.trim().toLowerCase(),n=numberIn(q),out=$('#aiAnswer'),ans='';if(!q)return;if((q.indexOf('recib')>-1||q.indexOf('salario')>-1||q.indexOf('quincena')>-1)&&n){S.profile.confirmed=n;save();render();ans='Confirmé '+fmt(n)+' como ingreso. Ya recalculé tu disponible protegido.'}else if(q.indexOf('gast')>-1&&q.indexOf('puedo')===-1&&n){S.tx.push({id:uid('tx'),cycleId:S.profile.cycleId,name:'Gasto rápido',amount:n,type:'gasto'});save();render();ans='Registré '+fmt(n)+' como gasto flexible.'}else if((q.indexOf('puedo')>-1||q.indexOf('compr')>-1||q.indexOf('gastar')>-1)&&n){ans=n<=Math.max(0,free())?'Sí cabe: después te quedarían '+fmt(Math.max(0,free()-n))+'. Si no es esencial, Arito igual vota por mandarlo a '+(target()?target().name:'tu meta')+'.':'No lo haría hoy: te faltan '+fmt(Math.abs(free()-n))+' y tocarías sobres o colchón.'}else if(q.indexOf('pie')>-1||q.indexOf('vend')>-1||q.indexOf('freelance')>-1){ans='Para no confundir venta con ganancia, registrá el movimiento en Ingresos extra. La app calcula ventas menos capital y, cuando esté cobrado, solo la utilidad se podrá enviar a '+(target()?target().name:'tu prioridad')+'.'}else{ans='Probá con “¿puedo gastar 5000?”, “recibí 240000 de salario” o “vendí 20 pies”.'}out.textContent=ans;out.classList.remove('hide');$('#aiInput').value=''}
+  function bind(){
+    $('#startPreset').onclick=function(){start(true)};$('#startBlank').onclick=function(){start(false)};
+    $$('.nav button').forEach(function(b){b.onclick=function(){page(b.dataset.page)}});$$('[data-go]').forEach(function(b){b.onclick=function(){page(b.dataset.go)}});
+    $('#openAccount').onclick=function(){page('plan');setTimeout(function(){$('#accountCard').scrollIntoView({behavior:'smooth',block:'start'})},80)};
+    $('#connectGoogle').onclick=function(){connectAccount('google')};$('#connectApple').onclick=function(){connectAccount('apple')};$('#connectFacebook').onclick=function(){connectAccount('facebook')};$('#syncCurrentPlan').onclick=syncCurrentPlan;
+    $('#signOut').onclick=function(){if(window.MiQuincenaCloud)window.MiQuincenaCloud.signOut().then(function(){note('Sesión cerrada. Tu copia en este teléfono sigue protegida.')})};
+    $('#enableNotifications').onclick=requestNotifications;$('#testNotification').onclick=testNotification;$('#emailReport').onclick=composeGmail;$('#installApp').onclick=installPwa;
+    $('#quickAdd').onclick=function(){page('budget');setTimeout(function(){$('#expenseName').focus()},180)};
+    $('#goIncome').onclick=function(){page('budget');setTimeout(function(){$('#confirmedInput').focus()},100)};$('#askArito').onclick=function(){$('#aiInput').focus()};$('#aiSend').onclick=ai;$('#aiInput').onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();ai()}};
+    $$('.cycle').forEach(function(b){b.onclick=function(){S.profile.cycle=b.dataset.cycle;save();render()}});
+    $$('.preset').forEach(function(b){b.onclick=function(){var modes={calma:210000,normal:240000,bono:262150};S.profile.expected=modes[b.dataset.preset];S.profile.confirmed=0;save();render();note('Escenario aplicado: '+fmt(S.profile.expected))}});
+    $('#incomeForm').onsubmit=function(e){e.preventDefault();S.profile.expected=Number($('#expectedInput').value)||0;S.profile.confirmed=Number($('#confirmedInput').value)||0;save();render();note(S.profile.confirmed?'Ingreso confirmado':'Estimado actualizado')};
+    $('#expenseForm').onsubmit=function(e){e.preventDefault();var n=$('#expenseName').value.trim(),a=Number($('#expenseAmount').value)||0;if(!n||a<=0)return;S.tx.push({id:uid('tx'),cycleId:S.profile.cycleId,name:n,amount:a,type:'gasto'});save();render();e.target.reset();note('Gasto registrado')};
+    $('#addBill').onclick=function(){openBillForm()};$('#cancelBill').onclick=resetBillForm;
+    $('#billForm').onsubmit=function(e){e.preventDefault();var n=$('#billName').value.trim(),a=Number($('#billAmount').value)||0,id=e.target.dataset.editId,b=id?S.bills.find(function(x){return x.id===id}):null;if(!n||a<=0)return;if(b){b.name=n;b.amount=a;b.due=$('#billDue').value;b.type=$('#billType').value;if(b.fare)b.fare=false;note('Sobre actualizado')}else{S.bills.push({id:uid('bill'),name:n,amount:a,due:$('#billDue').value,type:$('#billType').value});note('Sobre creado')}save();resetBillForm();render()};
+    $('#addDebt').onclick=function(){var n=prompt('Nombre de la deuda');if(!n)return;var m=Number(prompt('Cuota mínima por quincena (₡)','0'))||0;var b=prompt('Saldo pendiente (vacío si no lo sabés)');S.debts.push({id:uid('debt'),name:n,minimum:m,balance:b===''||b===null?null:Number(b)||0,priority:S.debts.length+1});save();render();note('Deuda agregada')};
+    ['pieUnits','piePrice','piePrices','pieCost','pieSource'].forEach(function(id){$('#'+id).addEventListener('input',updateExtraPreview);$('#'+id).addEventListener('change',updateExtraPreview)});$('#cancelPie').onclick=resetExtraForm;
+    $('#pieForm').onsubmit=function(e){e.preventDefault();var custom=pricesIn($('#piePrices').value),u=custom.length?custom.length:Number($('#pieUnits').value)||0,p=Number($('#piePrice').value)||0,c=Number($('#pieCost').value)||0,n=$('#pieName').value.trim()||extraSource($('#pieSource').value),id=e.target.dataset.editId,old=id?S.pies.find(function(x){return x.id===id}):null;if(u<=0||p<0||c<0){note('Completá cantidad, precio y capital');return}if(old&&old.sent){note('Ese ingreso ya fue asignado a una deuda y no se puede editar');return}var data={name:n,source:$('#pieSource').value,units:u,price:p,prices:custom,cost:c,collected:$('#pieCollected').value==='yes'};if(old){Object.keys(data).forEach(function(k){old[k]=data[k]});note('Ingreso actualizado')}else{data.id=uid('pie');data.sent=false;S.pies.push(data);note('Ingreso registrado')}save();resetExtraForm();render()};$('#sendProfit').onclick=sendProfit;
+    $('#settingsForm').onsubmit=function(e){e.preventDefault();S.profile.name=$('#settingName').value.trim();S.profile.cash=Number($('#settingCash').value)||0;S.profile.fare=Number($('#settingFare').value)||0;S.profile.days=Number($('#settingDays').value)||0;S.profile.buffer=Number($('#settingBuffer').value)||0;save();render();note('Ajustes guardados')};
+    $('#copyPrompt').onclick=function(){navigator.clipboard.writeText(promptText()).then(function(){note('Resumen copiado')}).catch(function(){note('Seleccioná y copiá el resumen')})};
+    $('#export').onclick=function(){var blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mi-quincena-respaldo.json';a.click();setTimeout(function(){URL.revokeObjectURL(url)},500);note('Respaldo descargado')};
+    $('#presetAgain').onclick=function(){if(confirm('Esto reemplaza los datos actuales por el plan precargado. ¿Seguimos?'))start(true)};
+    $('#reset').onclick=function(){if(confirm('¿Borrar todo y volver a iniciar desde cero?')){localStorage.removeItem(storageKey());if(activeAccount.provider==='device')localStorage.removeItem(LEGACY_KEY);if(cloudSyncReady&&window.MiQuincenaCloud)window.MiQuincenaCloud.clearRemote().catch(function(){});S=null;migrationCandidate=null;cloudSyncReady=false;$('#app').classList.add('hide');$('#quickAdd').classList.add('hide');$('#setup').classList.remove('hide');updateAccountUI();note('Datos borrados')}};
+  }
+  S=load();bind();registerPwa();startCloud();if(S){$('#setup').classList.add('hide');$('#app').classList.remove('hide');$('#quickAdd').classList.remove('hide');render()}else updateAccountUI();
+})();
+</script>
+</body>
+</html>
